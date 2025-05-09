@@ -198,8 +198,8 @@ const expLogos = [
 
 const testimonials = [
   {
-    name: "MontonK3",
-    mentions: "@Mock",
+    name: "Phitsanuwong Srithong",
+    mentions: "@Earth",
     review: "บริการของ NMSoft.co เกินความคาดหมาย ทีมงานเข้าใจความต้องการของเราอย่างรวดเร็ว และพัฒนาเว็บไซต์ที่ตรงใจลูกค้าของเรามาก การออกแบบสวยงาม ใช้งานง่าย และรองรับอุปกรณ์ทุกขนาด ขอบคุณทีมงานทุกคนที่ทำให้ธุรกิจของเราดีขึ้นมาก",
     imgPath: "/images/tanatut.png",
   },
