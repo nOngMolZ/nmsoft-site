@@ -54,6 +54,7 @@ Thumbs.db
 # Docker image archives (ที่คุณใส่ไว้แล้ว ดีมากครับ)
 nmsoft-amd64.tar
 nmsoft-image.tar
+*.tar
 # อาจจะเพิ่ม *.tar โดยทั่วไปถ้าคุณไม่ต้องการเก็บไฟล์ tar อื่นๆ ใน repo
 
 # Coverage directory
