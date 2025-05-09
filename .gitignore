@@ -7,20 +7,64 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Node dependencies
+node_modules/
+package-lock.json # ถ้าคุณใช้ npm และต้องการให้ทุกคนในทีมใช้เวอร์ชันเดียวกัน (ถ้าไม่ ให้ ignore)
+# yarn.lock # ถ้าคุณใช้ yarn และต้องการให้ทุกคนในทีมใช้เวอร์ชันเดียวกัน (ถ้าไม่ ให้ ignore)
+
+# Build output
+dist/
+dist-ssr/ # ถ้ามี Server-Side Rendering output
+build/    # สำหรับ Create React App หรือ build output อื่นๆ
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.local # กว้างไปหน่อย อาจจะพิจารณาให้เฉพาะเจาะจงมากขึ้นถ้าจำเป็น
 
 # Editor directories and files
 .vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
 !.vscode/extensions.json
-.idea
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.sublime/
+
+# Operating System generated files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files & miscellaneous
+*.swp # vi/vim swap files
+*~     # Backup files from some editors
+*.bak
+*.tmp
+
+# Docker image archives (ที่คุณใส่ไว้แล้ว ดีมากครับ)
 *.nmsoft-amd64.tar
 *.nmsoft-image.tar
+# อาจจะเพิ่ม *.tar โดยทั่วไปถ้าคุณไม่ต้องการเก็บไฟล์ tar อื่นๆ ใน repo
+
+# Coverage directory
+coverage/
+.nyc_output/
+
+# IDE-specific (เพิ่มเติม)
+nbproject/ # Netbeans
+*.iml    # IntelliJ
+*.ipr    # IntelliJ
+*.iws    # IntelliJ
+
+# Optional: ถ้าคุณใช้ Vite และมี .vite แคช
+.vite/
