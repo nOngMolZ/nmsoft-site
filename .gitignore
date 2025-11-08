@@ -69,3 +69,7 @@ nbproject/ # Netbeans
 
 # Optional: ถ้าคุณใช้ Vite และมี .vite แคช
 .vite/
+
+# Claude
+.claude/
+.CLAUDE
