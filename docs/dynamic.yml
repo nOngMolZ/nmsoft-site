@@ -1,0 +1,25 @@
+http:
+  middlewares:
+    rate-limit:
+      rateLimit:
+        burst: 100
+        average: 50
+    auth:
+      basicAuth:
+        users:
+          - "admin:$apr1$dYlsYZdN$JlAoPalmhGjIopQIkMhc4."
+        realm: "Traefik Dashboard"
+        removeHeader: true
+    redirect-to-https:
+      redirectScheme:
+        scheme: https
+        permanent: true
+  routers:
+    http-to-https:
+      entryPoints:
+        - web
+      rule: HostRegexp(`{host:.+}`)
+      middlewares:
+        - redirect-to-https
+      service: noop@internal
+      priority: 1
