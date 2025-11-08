@@ -18,31 +18,13 @@ services:
       - traefik
 
     labels:
-      - "traefik.enable=true"
-
-      # บอก Traefik ว่าควรใช้ network ชื่อ traefik เวลาเชื่อมเข้า service นี้
-      - "traefik.docker.network=traefik"
-
-      # =========================
-      # HTTPS router (ของจริง)
-      # =========================
-      - "traefik.http.routers.nmsoft-site.rule=Host(`nmsoft.co`)"
-      - "traefik.http.routers.nmsoft-site.entrypoints=websecure"
-      - "traefik.http.routers.nmsoft-site.tls.certresolver=myresolver"
-      - "traefik.http.services.nmsoft-site.loadbalancer.server.port=80"
-
-      # =========================
-      # HTTP router (แค่ไว้ redirect)
-      # =========================
-      - "traefik.http.routers.nmsoft-site-web.rule=Host(`nmsoft.co`)"
-      - "traefik.http.routers.nmsoft-site-web.entrypoints=web"
-      - "traefik.http.routers.nmsoft-site-web.middlewares=redirect-to-https"
-
-      # =========================
-      # Middleware: redirect http -> https
-      # =========================
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+      - traefik.enable=true
+      - traefik.http.routers.nmsoft.co.rule=Host(`nmsoft.co`)
+      - traefik.http.routers.nmsoft.co.entrypoints=websecure
+      - traefik.http.routers.nmsoft.co.tls=true
+      - traefik.http.routers.nmsoft.co.tls.certresolver=myresolver
+      - traefik.docker.network=traefik
+      - traefik.http.services.nmsoft.co.loadbalancer.server.port=3000
 
 networks:
   traefik:
