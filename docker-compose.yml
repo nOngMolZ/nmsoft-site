@@ -19,26 +19,30 @@ services:
 
     labels:
       - "traefik.enable=true"
-      # ระบุ network ที่ Traefik ใช้ในการเชื่อมต่อ service
+
+      # บอก Traefik ว่าควรใช้ network ชื่อ traefik เวลาเชื่อมเข้า service นี้
       - "traefik.docker.network=traefik"
 
-      # ให้ traefik รู้ว่าโดนยิงตอน Host = nmsoft.co
+      # =========================
+      # HTTPS router (ของจริง)
+      # =========================
       - "traefik.http.routers.nmsoft-site.rule=Host(`nmsoft.co`)"
-
-      # ใช้ HTTPS entrypoint ของ traefik
       - "traefik.http.routers.nmsoft-site.entrypoints=websecure"
-
-      # ออก cert ด้วย Let's Encrypt resolver ชื่อ myresolver (ตาม traefik.yml ที่ตั้งไว้)
       - "traefik.http.routers.nmsoft-site.tls.certresolver=myresolver"
-
-      # ระบุ port ของ service ชัดๆ กันพลาด (ใน container คือ 80)
       - "traefik.http.services.nmsoft-site.loadbalancer.server.port=80"
 
-      # สร้าง HTTP router เพื่อ redirect ไป HTTPS (web -> websecure)
+      # =========================
+      # HTTP router (แค่ไว้ redirect)
+      # =========================
       - "traefik.http.routers.nmsoft-site-web.rule=Host(`nmsoft.co`)"
       - "traefik.http.routers.nmsoft-site-web.entrypoints=web"
       - "traefik.http.routers.nmsoft-site-web.middlewares=redirect-to-https"
+
+      # =========================
+      # Middleware: redirect http -> https
+      # =========================
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
 
 networks:
   traefik:
