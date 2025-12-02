@@ -1,5 +1,6 @@
 import { socialImgs } from "../constants";
 import { useTheme } from "../context/ThemeContext";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { isDarkMode } = useTheme();
@@ -8,7 +9,10 @@ const Footer = () => {
     <footer className={`footer ${!isDarkMode && "bg-gray-50"}`}>
       <div className="footer-container">
         <div className="flex flex-col justify-center">
-          <p className={isDarkMode ? "text-white-50" : "text-gray-600"}>Terms & Conditions</p>
+          <div className={`flex gap-4 ${isDarkMode ? "text-white-50" : "text-gray-600"}`}>
+            <p>Terms & Conditions</p>
+            <Link to="/policy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link>
+          </div>
         </div>
         <div className="socials">
           {socialImgs.map((socialImg, index) => (

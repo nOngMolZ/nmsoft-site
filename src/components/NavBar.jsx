@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { navLinks } from "../constants";
 import { MdContactPhone } from "react-icons/md";
 
@@ -6,6 +7,7 @@ import ThemeToggle from "./ThemeToggle";
 
 const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,14 +20,14 @@ const NavBar = () => {
   return (
     <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
-        <a href="#hero" className="logo">
+        <Link to="/" className="logo">
           <img src="/images/logos/company-logo-4.png" className="h-[64px] w-auto" alt="" />
-        </a>
+        </Link>
         <nav className="desktop">
           <ul>
             {navLinks.map(({ link, name }) => (
               <li key={name} className="group">
-                <a href={link}>
+                <a href={location.pathname === "/" ? link : `/${link}`}>
                   <span>{name}</span>
                   <span className="underline" />
                 </a>
@@ -35,7 +37,7 @@ const NavBar = () => {
         </nav>
         <div className="flex items-center gap-4">
           <ThemeToggle />
-          <a href="#contact" className="contact-btn group">
+          <a href={location.pathname === "/" ? "#contact" : "/#contact"} className="contact-btn group">
             <div className="inner gap-2">
               <MdContactPhone />
               <span>ติดต่อเรา</span>
