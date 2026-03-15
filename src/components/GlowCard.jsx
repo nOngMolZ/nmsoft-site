@@ -1,9 +1,6 @@
 import React, { useRef } from "react";
-import { useTheme } from "../context/ThemeContext";
-
 const GlowCard = ({ card, children, index }) => {
   const cardRefs = useRef([]);
-  const { isDarkMode } = useTheme();
 
   const handleMouseMove = (index) => (e) => {
     const card = cardRefs.current[index];
@@ -21,10 +18,7 @@ const GlowCard = ({ card, children, index }) => {
     <div
       ref={(el) => (cardRefs.current[index] = el)}
       onMouseMove={handleMouseMove(index)}
-      className={`card ${isDarkMode ? "card-border" : "card-border-light"} timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column transition-all duration-300`}
-      style={{
-        boxShadow: !isDarkMode ? "0 4px 10px rgba(0, 0, 0, 0.05)" : "none",
-      }}
+      className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column transition-all duration-300"
     >
       <div className="glow" />
       <div className="flex items-center gap-1 mb-5">
@@ -33,7 +27,7 @@ const GlowCard = ({ card, children, index }) => {
         ))}
       </div>
       <div className="mb-5">
-        <p className={`${isDarkMode ? "text-white-50" : "text-gray-700"} text-lg`}>{card.review}</p>
+        <p className="text-white-50 text-lg">{card.review}</p>
       </div>
       {children}
     </div>

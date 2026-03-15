@@ -1,8 +1,6 @@
 import React from "react";
-import { useTheme } from "../context/ThemeContext";
 
 const Button = ({ text, className, id }) => {
-  const { isDarkMode } = useTheme();
 
   return (
     <a
@@ -20,7 +18,7 @@ const Button = ({ text, className, id }) => {
       }}
       className={`${className ?? ""} cta-wrapper`}
     >
-      <div className={`cta-button group ${!isDarkMode && "cta-button-light"}`}>
+      <div className="cta-button group">
         <div className="bg-circle" />
         <p className="text">{text}</p>
         <div className="arrow-wrapper">

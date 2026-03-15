@@ -4,10 +4,8 @@ import { techStackIcons } from "../constants";
 import TechIcon from "../components/Models/TechLogos/TechIcon";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useTheme } from "../context/ThemeContext";
 
 const TechStack = () => {
-  const { isDarkMode } = useTheme();
 
   useGSAP(() => {
     gsap.fromTo(
@@ -34,19 +32,15 @@ const TechStack = () => {
           {techStackIcons.map((icon) => (
             <div
               key={icon.name}
-              className={`${isDarkMode ? "card-border" : "card-border-light"} tech-card overflow-hidden group xl:rounded-full rounded-lg hover:shadow-lg transition-all duration-300`}
-              style={{
-                background: !isDarkMode ? "linear-gradient(to bottom, #ffffff, #f8f9fa)" : "",
-                boxShadow: !isDarkMode ? "0 4px 6px -1px rgba(0, 0, 0, 0.1)" : "",
-              }}
+              className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg hover:shadow-lg transition-all duration-300"
             >
-              <div className={`${isDarkMode ? "tech-card-animated-bg" : "tech-card-animated-bg-light"}`} />
+              <div className="tech-card-animated-bg" />
               <div className="tech-card-content">
                 <div className="tech-icon-wrapper">
                   <TechIcon model={icon} />
                 </div>
                 <div className="padding-x w-full relative z-20">
-                  <p className={`${isDarkMode ? "text-white-50" : "text-gray-800"} font-medium group-hover:text-white`}>{icon.name}</p>
+                  <p className="text-white-50 font-medium group-hover:text-white">{icon.name}</p>
                 </div>
               </div>
             </div>
