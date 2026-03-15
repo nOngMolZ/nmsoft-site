@@ -54,7 +54,7 @@ const logoIconsList = [
   },
   {
     name: "gold-monogram-logo",
-    imgPath: "/images/logos/company-logo-5.jpg",
+    imgPath: "/images/logos/company-logo-5.png",
   },
 ];
 
